@@ -2,25 +2,40 @@
 #include <stdlib.h>
 
 /*
-    Given a character array s, return the number of characters 
-    held inside it.
+
+    Given a character array s (as a pointer), return the number of 
+    characters in the string.
     
     Do not just use the `strlen` function from the standard libary.
 */
-int string_length(char s[])
+int string_length(char *s)
 {
+    int c = 0;
 
+    while (s[c] != '\0')
+    {
+        c++;
+    }
+    return c;
 }
 
 /*
-    Write a function that reverses the order of string s and outputs 
-    the reversed string to the input array rv. The rv array will have 
-    enough space for the reversed string. Don't forget to terminate 
+    Write a function that reverses the order of string s and outputs
+    the reversed string to the input array rv. The rv array will have
+    enough space for the reversed string. Don't forget to terminate
     the reversed string with a null character. Return the rv array.
 */
-char *reverse_string(char rv[], char s[])
+char *reverse_string(char *rv, char *s)
 {
-
+    int length = string_length(s) - 1;
+    int start = 0;
+    for (int i = length; i >= 0; i--)
+    {
+        rv[start] = s[i];
+        start++;
+    }
+    rv[start] = 0;
+    return rv;
 }
 
 #ifndef TESTING
@@ -37,4 +52,3 @@ int main(void)
     return 0;
 }
 #endif
-    
